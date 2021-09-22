@@ -1,10 +1,10 @@
 const express = require('express');
-const app = express()
-const port = 5000
+const app = express();
+const port = 5000;
 
 const config = require("./config/dev");
 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 mongoose.connect(config.mongoURI, {
     useNewUrlParser: true
 }).then(() => console.log('MongoDB Connected...'))
