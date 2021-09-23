@@ -4,4 +4,4 @@
 > git rm --cached node_modules -r
 
 2. git 과정
-> Working Directory -> git add -> Staging Area -> git commit -> Git repository (local) -> git push -> Git repository (remote)
+> Working Directory -> `git add` -> Staging Area -> `git commit` -> Git repository (local) -> `git push` -> Git repository (remote)
