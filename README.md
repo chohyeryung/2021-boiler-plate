@@ -11,3 +11,6 @@
 
 
 > `git` : 로컬에서 관리되는 버전 관리 시스템 / `github` : 클라우드 방식으로 관리되는 버전 관리 시스템
+
+4. ssh key
+> id_rsa : private / id_rsa.pub : public key
