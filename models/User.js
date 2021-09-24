@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;  // salt 글자 수 (salt를 이용해 암호화)
 
 const userSchema = mongoose.Schema({
     name: {
@@ -28,6 +30,23 @@ const userSchema = mongoose.Schema({
     },
     tokenExp: {
         type: Number
+    }
+})
+
+// save전에 비밀번호 암호화
+userSchema.pre('save', function( next ){
+    var user = this;
+
+    if (user.isModified('password')) {
+        // 비밀번호가 변경될 때만 다시 암호화 (name, email 등만 바꿀 때는 비밀번호를 다시 암호화할 필요 없음)
+        bcrypt.genSalt(saltRounds, function(err, salt){
+            if(err) return next(err)
+            bcrypt.hash(user.password, salt, function(err, hash){
+                if(err) return next(err)
+                user.password = hash;    // post 받아온 password에 hash를 담아줌
+                next();    // next -> 바로 save 구문이 실행됨
+            })
+        })
     }
 })
 
