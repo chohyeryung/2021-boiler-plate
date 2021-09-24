@@ -4,7 +4,7 @@ const port = 5000;
 
 const { User } = require('./models/User');
 
-const config = require("./config/dev");
+const config = require("./config/key");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
